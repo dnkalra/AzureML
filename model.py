@@ -34,7 +34,7 @@ from sklearn.decomposition import PCA
 get_ipython().run_line_magic('pip', 'install -U azureml-fsspec')
 
 uri = (
-  "azureml://subscriptions/6b4c496c-6071-4e70-a452-08640086db07/resourcegroups/Central_Tools_Prod"
+  "azureml://subscriptions/ID/resourcegroups/Central_Tools_Prod"
   "/workspaces/marketingamlw/datastores/entity_matching"
   "/paths/Raw/Account_Master_Delta_20251117.csv"
 )
@@ -81,7 +81,7 @@ print(len(df))
 response1 = requests.post(
   "https://embed-v-4-0-qvhcs.eastus2.models.ai.azure.com/v2/embed",
   headers={
-    "Authorization": "Bearer MK0VaaWyJBqHVhVSspkasq3I3Xvw6dhH"
+    "Authorization": "Bearer token"
   },
   json={
     "model": "embed-v-4.0",
@@ -148,7 +148,7 @@ def embed_company_names(
     if batch_size > 96:
         raise ValueError("batch_size must be <= 96 for this endpoint.")
 
-    headers={"Authorization": "Bearer MK0VaaWyJBqHVhVSspkasq3I3Xvw6dhH"}
+    headers={"Authorization": "Bearer token"}
     session = make_session()
     all_vectors = []
     for batch_idx, batch in enumerate(chunked(company_names, batch_size), start=1):
