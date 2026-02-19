@@ -26,8 +26,6 @@ pd.set_option("display.max_colwidth", None)
 
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
-
-
 # In[4]:
 
 
